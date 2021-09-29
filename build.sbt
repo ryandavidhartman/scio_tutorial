@@ -6,7 +6,6 @@ import complete.DefaultParsers._
 
 val scioVersion = "0.11.0"
 val beamVersion = "2.32.0"
-val flinkVersion = "1.13.2"
 val sparkVersion = "3.1.2"
 
 lazy val commonSettings = Def.settings(
@@ -38,17 +37,6 @@ lazy val root: Project = project
       "com.spotify" %% "scio-test" % scioVersion % Test,
       "org.apache.beam" % "beam-runners-direct-java" % beamVersion,
       "org.apache.beam" % "beam-runners-google-cloud-dataflow-java" % beamVersion,
-      "org.apache.beam" % "beam-runners-flink-1.10" % beamVersion excludeAll (
-        ExclusionRule("com.twitter", "chill_2.11"),
-        ExclusionRule("org.apache.flink", "flink-clients_2.11"),
-        ExclusionRule("org.apache.flink", "flink-runtime_2.11"),
-        ExclusionRule("org.apache.flink", "flink-streaming-java_2.11"),
-        ExclusionRule("org.apache.flink", "flink-optimizer_2.11")
-      ),
-      "org.apache.flink" %% "flink-clients" % flinkVersion,
-      "org.apache.flink" %% "flink-runtime" % flinkVersion,
-      "org.apache.flink" %% "flink-streaming-java" % flinkVersion,
-      "org.apache.flink" %% "flink-optimizer" % flinkVersion,
       "org.apache.beam" % "beam-runners-spark" % beamVersion exclude (
         "com.fasterxml.jackson.module", "jackson-module-scala_2.11"
       ),
