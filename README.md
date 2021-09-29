@@ -2,7 +2,7 @@
 
 ## Raison d'être
 
-TODO: your project description
+TODO: Learn Data Flow from Scala!  (maybe also Spark and maybe and Beam in general)
 
 ## Features
 
