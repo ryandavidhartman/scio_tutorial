@@ -40,10 +40,13 @@ lazy val root: Project = project
       "org.apache.beam" % "beam-runners-spark" % beamVersion exclude (
         "com.fasterxml.jackson.module", "jackson-module-scala_2.11"
       ),
-      "org.apache.spark" %% "spark-core" % sparkVersion,
-      "org.apache.spark" %% "spark-streaming" % sparkVersion,
+      "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
+      "org.apache.spark" %% "spark-streaming" % sparkVersion % "provided",
       "org.slf4j" % "slf4j-simple" % "1.7.32"
     )
+
+
+
   )
   .enablePlugins(JavaAppPackaging)
 
@@ -78,6 +81,7 @@ lazy val assemblySettings = Def.settings(
         MergeStrategy.filterDistinctLines
       case s if s.endsWith(".class") => MergeStrategy.last
       case s if s.endsWith(".proto") => MergeStrategy.last
+      case s if s.endsWith(".fmpp") => MergeStrategy.last
       case s if s.endsWith("reflection-config.json") => MergeStrategy.rename
       case s                         => old(s)
     }
